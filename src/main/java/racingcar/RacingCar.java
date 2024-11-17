@@ -29,18 +29,17 @@ public class RacingCar {
 
     public List<String> findWinner(Map<String, Integer> cars) {
         List<Map.Entry<String, Integer>> carList = new ArrayList<>(cars.entrySet());
-        carList.sort(((o1, o2) -> cars.get(o2.getValue()) - cars.get(o1.getValue())));
+        carList.sort(((o1, o2) -> cars.get(o2.getKey()) - cars.get(o1.getKey())));
 
         List<String> winners = new ArrayList<>();
         Integer maxValue = carList.get(0).getValue();
 
-        for(Map.Entry<String, Integer> car : carList) {
-            if(car.getValue() != maxValue) {
+        for (Map.Entry<String, Integer> car : carList) {
+            if (car.getValue() != maxValue) {
                 break;
             }
             winners.add(car.getKey());
         }
-
         return winners;
     }
 
