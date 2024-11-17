@@ -16,7 +16,7 @@ public class RacingCar {
         Map<String, Integer> cars = createCar(carNames);
     }
 
-    private Map<String, Integer> createCar(String[] carNames) { // 자동차의 이동 횟수를 저장할 MAP 구현
+    public Map<String, Integer> createCar(String[] carNames) { // 자동차의 이동 횟수를 저장할 MAP 구현
         Map<String, Integer> cars = new HashMap<>();
 
         for(String name : carNames) {
