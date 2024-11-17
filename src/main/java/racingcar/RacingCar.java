@@ -3,7 +3,9 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class RacingCar {
@@ -21,6 +23,25 @@ public class RacingCar {
 
             showRaceProgress(cars);
         }
+
+        List<String> winners = findWinner(cars);
+    }
+
+    public List<String> findWinner(Map<String, Integer> cars) {
+        List<Map.Entry<String, Integer>> carList = new ArrayList<>(cars.entrySet());
+        carList.sort(((o1, o2) -> cars.get(o2.getValue()) - cars.get(o1.getValue())));
+
+        List<String> winners = new ArrayList<>();
+        Integer maxValue = carList.get(0).getValue();
+
+        for(Map.Entry<String, Integer> car : carList) {
+            if(car.getValue() != maxValue) {
+                break;
+            }
+            winners.add(car.getKey());
+        }
+
+        return winners;
     }
 
     private void showRaceProgress(Map<String, Integer> cars) {
