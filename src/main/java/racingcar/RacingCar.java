@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,6 +15,24 @@ public class RacingCar {
         int numberOfAttempts = inputNumberOfAttempts();
 
         Map<String, Integer> cars = createCar(carNames);
+
+        for(int i = 0; i < numberOfAttempts; i++) {
+            playRound(cars);
+        }
+    }
+
+    private boolean canMove() {
+        int number = Randoms.pickNumberInRange(0, 9);
+
+        return number >= 4;
+    }
+
+    private void playRound(Map<String, Integer> cars) {
+        for(Map.Entry<String, Integer> car : cars.entrySet()) {
+            if(canMove()) {
+                cars.put(car.getKey(), car.getValue() + 1);
+            }
+        }
     }
 
     public Map<String, Integer> createCar(String[] carNames) { // 자동차의 이동 횟수를 저장할 MAP 구현
