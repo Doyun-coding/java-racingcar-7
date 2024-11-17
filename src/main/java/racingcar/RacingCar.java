@@ -2,6 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.view.InputView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,12 +10,11 @@ import java.util.List;
 import java.util.Map;
 
 public class RacingCar {
-    private static final String INPUT_CAR_NAME_MESSAGE = "경주할 자동차 이름을 입력해주세요.(이름은 쉼표(,) 기준으로 구분)";
-    private static final String INPUT_ATTEMPT_MESSAGE = "시도할 횟수는 몇 회인가요?";
 
     public void run() {
-        String[] carNames = inputCarName();
-        int numberOfAttempts = inputNumberOfAttempts();
+
+        String[] carNames = InputView.getCarNames().split(",");
+        int numberOfAttempts = InputView.getNumberOfNames();
 
         Map<String, Integer> cars = createCar(carNames);
 
@@ -87,20 +87,6 @@ public class RacingCar {
         }
 
         return cars;
-    }
-
-    private String[] inputCarName() { // 경주할 자동차 이름 입력 받는 함수
-        System.out.println(INPUT_CAR_NAME_MESSAGE);
-        String input = Console.readLine();
-
-        return input.split(",");
-    }
-
-    private int inputNumberOfAttempts() { // 시도 횟수 입력 받는 함수
-        System.out.println(INPUT_ATTEMPT_MESSAGE);
-        String input = Console.readLine();
-
-        return Integer.parseInt(input);
     }
 
 }
