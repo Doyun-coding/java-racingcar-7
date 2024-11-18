@@ -11,7 +11,7 @@ public class InputView {
         String input = Console.readLine();
         validateNotBlank(input);
 
-        return input;
+        return input.trim();
     }
 
     public static int getNumberOfAttempts() {
