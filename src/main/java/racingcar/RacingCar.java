@@ -2,6 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.domain.Cars;
 import racingcar.view.InputView;
 
 import java.util.ArrayList;
@@ -13,11 +14,11 @@ public class RacingCar {
 
     public void run() {
 
-        String[] carNames = InputView.getCarNames().split(",");
-        int numberOfAttempts = InputView.getNumberOfNames();
+        String carNames = InputView.getCarNames();
+        Cars cars = new Cars(carNames);
 
-        Map<String, Integer> cars = createCar(carNames);
-
+        int numberOfAttempts = InputView.getNumberOfAttempts();
+/*
         for(int i = 0; i < numberOfAttempts; i++) {
             playRound(cars);
 
@@ -27,6 +28,8 @@ public class RacingCar {
         List<String> winners = findWinner(cars);
 
         showResult(winners);
+
+ */
     }
 
     private void showResult(List<String> winners) {
