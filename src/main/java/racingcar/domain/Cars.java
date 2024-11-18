@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,6 +16,10 @@ public class Cars {
         validateNoDuplicates(carNames);
 
         this.cars = createCars(carNames);
+    }
+
+    public List<Car> get() {
+        return Collections.unmodifiableList(cars);
     }
 
     private List<Car> createCars(List<String> carNames) {
