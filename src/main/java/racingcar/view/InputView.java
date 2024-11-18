@@ -14,7 +14,7 @@ public class InputView {
         return input;
     }
 
-    public static int getNumberOfNames() {
+    public static int getNumberOfAttempts() {
         System.out.println(INPUT_ATTEMPT_MESSAGE);
         String input = Console.readLine();
         validateNotBlank(input);
